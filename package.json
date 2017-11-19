@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/laneelliott/friendfinder/issues"
   },
-  "homepage": "https://github.com/laneelliott/friendfinder#readme"
+  "homepage": "https://github.com/laneelliott/friendfinder#readme",
+  "dependencies": {
+    "express": "^4.16.2"
+  }
 }
