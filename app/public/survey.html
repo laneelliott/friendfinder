@@ -183,7 +183,28 @@
 
 	<!-- Custom JS -->
 	<script type="text/javascript">
-		console.log('running')
+		console.log('running');
+
+		function findFriend(userData){
+			console.log(userData);
+			$.get('/api/friends', function(data){
+				if(data){
+					var resultsArr = [];
+					for (var i = 0; i < data.length; i++) {
+						//reset the total for each new friend
+						var runningTotal = 0;
+						for (var j = 0; j < data[i].scores.length; j++) {
+							console.log(data[i].scores[j]);
+							//runningTotal += Math.abs(parseInt(data[i].scores[j]) - parseInt(userData[i].scores[j]))
+						}
+						console.log(data[i])
+					}
+				} else {
+					console.log('failed get');
+				}
+			});
+		};
+
 		$('#find-friend').on('click', function(){
 			event.preventDefault();
 			var newFriend = {
@@ -202,14 +223,19 @@
 					$('#answer10').val()
 				]
 			};
+
+			findFriend(newFriend);
+
 			$.post('/api/friends', newFriend, function(data){
 				if(data){
 					console.log('You have been added to Friend Finder');
+
 				} else {
 					console.log('Sorry there seems to be an error');
 				}
 			})
 		});
+
 
 	</script>
 </body>
